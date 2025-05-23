@@ -1,0 +1,72 @@
+<div class="container">
+  <div class=" py-2 px-3 my-4" [style]="{background:'silver'}">
+    <h2>
+      <i class="fa fa-user" aria-hidden="true"></i> Customers
+    </h2>
+  </div>
+  <div class="row">
+    <div class="col-lg-3 d-flex">
+      <div class="input-group-prepend">
+        <span class="input-group-text d-block" id="basic-addon1">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </span>
+      </div>
+      <input type="text" class="form-control" placeholder="First name" (input)="searchByFirstName($event)">
+    </div>
+
+    <div class="my-2 my-lg-0 col-lg-3 d-flex">
+      <div class="input-group-prepend">
+        <span class="input-group-text d-block" id="basic-addon1">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </span>
+      </div>
+      <input type="text" class="form-control" placeholder="Last name" (input)="searchByLastName($event)">
+    </div>
+
+    <div class="mb-2 mb-lg-0 col-lg-3 d-flex">
+      <div class="input-group-prepend">
+        <span class="input-group-text d-block" id="basic-addon1">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </span>
+      </div>
+      <input type="text" class="form-control" placeholder="Phone" (input)="searchByPhone($event)">
+    </div>
+
+    <div class="col-lg-3">
+      <a routerLink="/admin/addCustomer" class="btn btn-info w-100">
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        Add customer</a>
+    </div>
+  </div>
+  <div class="mt-4 table-responsive-sm">
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th class="w-25">#</th>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Phone</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of _ar; let i = index">
+          <td>
+            {{i + 1}}
+            <a routerLink="/admin/customerInfo/{{item.id}}">
+              <i class="fa fa-eye ms-3" aria-hidden="true"></i>
+            </a>
+            <a routerLink="/admin/customerEdit/{{item.id}}">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </a>
+            <i (click)="delCustomer(item.id)" class="fa fa-trash" aria-hidden="true"></i>
+          </td>
+          <td>{{item.first}}</td>
+          <td>{{item.last}}</td>
+          <td>{{item.phone}}</td>
+          <td>{{item.email}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="d-flex flex-column" [ngClass]="{'bg-dark wrapperOpen' : !toggle, 'wrapperClosed':toggle}">
+  <button class="btn myMenu my-4 " (click)="Toggle()"
+    [ngClass]="{'menuOpen btn-outline-dark' : toggle, 'align-self-end btn-outline-light menuClose' : !toggle}">
+    <i class="fa fa-bars" aria-hidden="true" [ngClass]="{'show' : toggle, 'hide' : !toggle}"></i>
+    <i class="fa fa-chevron-left" aria-hidden="true" [ngClass]="{'show rounded-circle' : !toggle, 'hide' : toggle}"></i>
+  </button>
+  <div [ngClass]="{'show bg-dark side_nav' : !toggle, 'hide' : toggle}">
+    <a routerLink="/admin" [routerLinkActive]="['active']" (click)="Toggle()">Customers <i class="fa fa-users"></i>
+    </a>
+    <a routerLink="/admin/contacts" [routerLinkActive]="['active']" (click)="Toggle()">Contacts <i
+        class="fa fa-address-book-o"></i></a>
+    <a routerLink="/admin/leads" (click)="Toggle()">Leads <i class="fa fa-briefcase"></i></a>
+    <a routerLink="/admin/reports" (click)="Toggle()">Reports <i class="fa fa-flag"></i></a>
+  </div>
+</div>
